@@ -1,0 +1,123 @@
+body
+  background #fff
+  font-family "Open Sans", Arial
+  font-weight 300
+  color #666666
+  line-height 1.7
+  
+  @media( max-width 767px )
+    font-weight 400
+    
+a:hover,
+a:focus
+  text-decoration none
+  opacity .7
+    
+h1
+  
+  @media( max-width 767px )
+    text-align center
+    
+h2
+  font-size 13.5pt
+  
+hr
+    
+  &.i-size-S
+    margin-bottom 6px
+    margin-top 6px
+    
+  &.i-line
+    border-top 1px solid #f2f2f2
+    
+.btn
+  height auto
+  text-transform none
+  padding-top 0
+  padding-bottom 0
+  
+  &:hover
+    box-shadow none
+    
+  &-size-S
+    font-size 9.5pt
+    line-height 28px
+    padding-right 12px
+    padding-left 12px
+    
+.b-hr-heading
+  border-top 1px solid #f2f2f2
+  font-family "Open Sans","Times New Roman",serif
+  font-size 10.5pt
+  font-weight 400
+  position relative
+  margin 15px 0
+
+.b-hr-heading__content
+  position absolute
+  width 100%
+  text-align center
+  top -12px
+  left 0
+  display block
+
+.b-hr-heading__content span
+  display inline-block
+  background #fff
+  padding 0 8px
+  
+  .i-grey &
+    background transparent
+  
+.b-section
+  padding 50px 0
+  
+  &.i-grey
+    background-color #f9f9f9
+    
+.table>thead>tr>th,
+.table>tbody>tr>td
+  border-bottom 1px solid #f2f2f2
+  padding 20px 8px
+  
+.side-nav
+  transition( all 0.3s linear )
+  box-shadow 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 20px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2)
+  
+.text-info {
+    color: #f33;
+}
+
+.b-preloader
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+.b-preloader img {
+    /*opacity: 0;*/
+    -webkit-animation: animationBorderStepOpacity linear 1s;
+    -moz-animation: animationBorderStepOpacity linear 1s;
+    -o-animation: animationBorderStepOpacity linear 1s;
+    animation: animationBorderStepOpacity linear 1s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -o-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    /*-webkit-transform-origin: 0% 0%;
+    -moz-transform-origin: 0% 0%;
+    -ms-transform-origin: 0% 0%;
+    -o-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+    -webkit-animation-fill-mode:forwards;
+    -moz-animation-fill-mode:forwards;
+    -o-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;*/
+}
+
+@keyframes animationBorderStepOpacity
+  0%
+    transform:rotate(0)
+  100%
+    transform:rotate(360deg)
+
+.container-fluid { padding-right: 15px; padding-left: 15px; }
