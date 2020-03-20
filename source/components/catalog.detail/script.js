@@ -8,7 +8,7 @@
     $( '.b-catalog-detail' ).trigger( 'detail.ecommerce' );
     
     //individual order modal
-    $( '#individualOrder .b-material .b-zoom' ).click( function() {
+    $( '#individualOrder' ).delegate( '.b-material .b-zoom', 'click', function() {
       $( 'body' ).append( '<div id="individualOrderBg"><div class="b-img"><div class="b-img-close"></div><img src="' + $( this ).data( 'src' ) + '" alt=""></div></div>' );
     });
     
@@ -18,9 +18,25 @@
     
     //individual order link
     $( '#individualOrder' ).on( 'show.bs.modal', function (e) {
-      $( '#individualOrder .modal-body' ).removeClass( 'i-success' ).removeAttr( 'style' );
-      $( '#individualOrder .modal-footer .btn' ).show();
-      $( '#individualOrder .modal-footer .i-gray' ).hide();
+      var $link = $( e.relatedTarget );
+      
+      $.ajax({
+        url: $link.data( 'ajax-url' ),
+        type: 'GET',
+        dataType: "html",
+        data: 'id=' + $( '.b-catalog-detail' ).attr( 'data-id' ),
+        success: function(data) {
+          if ( data ) {
+            $( '#individualOrder form' ).remove();
+            $( '#individualOrder .modal-header' ).after( data );
+          }
+        },
+        error: function( a,b,c ) {
+          console.log(a);
+          console.log(b);
+          console.log(c);
+        }
+      });
     });
     
     $( '#individualOrder' ).delegate( 'form', 'submit', function(e) {
@@ -99,15 +115,15 @@
 				$('#consentModal').modal('show');
 			}
 		});
-    
-    var json = $( '#register-user-conf label' ).data( 'bx-user-consent' );
-    if ( typeof json === 'string' ) {
-      json = json.replace( /&quot;/g, '"');
-      json = JSON.parse( json );
-    }
-		var sessid = $( '#sessid' ).val();
 		
 		$('#consentModal').on( 'show.bs.modal', function (e) {
+    
+      var json = $( e.relatedTarget ).data( 'bx-user-consent' );
+      if ( typeof json === 'string' ) {
+        json = json.replace( /&quot;/g, '"');
+        json = JSON.parse( json );
+      }
+      var sessid = $( '#sessid' ).val();
 														  
 		  $.ajax({
         url: json.actionUrl,
@@ -120,11 +136,18 @@
           sec: json.sec
         },
         success: function(data) {
-          $( '#consentModal .modal-body' ).text( data.text );
+          $( '#consentModal .modal-body' ).text( data );
+          
+          //scale all open windows
+          $( '.modal.in:not( #consentModal )' ).addClass( 'i-scale' );
         },
         error: function() {}
 		  });
 		  
+		});
+    
+    $('#consentModal').on( 'hide.bs.modal', function (e) {
+		  $( '.modal.in:not( #consentModal )' ).removeClass( 'i-scale' );
 		});
     
     //store buttons - an icon and a link

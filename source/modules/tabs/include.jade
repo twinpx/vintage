@@ -31,12 +31,9 @@
             .form-group
               label Комментарий:
               textarea.form-control(name='MESSAGE', cols='10', rows='10', value='', required='required', style='overflow: hidden; word-wrap: break-word; height: 83px;')
-            #register-user-conf.form-group.checkbox(style='border-bottom: 0;')
-              //
-                input id="filled-in-box" type="checkbox" value="Y" name="" required="required"  class="filled-in"/>
-                <label for="filled-in-box" data-toggle="modal" data-target="#consentModal" class="main-user-consent-request">Нажимая на кнопку «Регистрация», вы даете согласие на обработку своих персональных данных.</label
+            .register-user-conf.form-group.checkbox(style='border-bottom: 0;')
               input#filled-in-box.filled-in(type='checkbox', value='Y', name='USERCONSENT')
-              label.main-user-consent-request(for='filled-in-box', data-toggle='modal', data-target='#consentModal', data-bx-user-consent='{"id":1,"sec":"4reejg","autoSave":false,"actionUrl":"\/ajax\/userconsent.php","replace":{"button_caption":null,"fields":null},"submitEventName":"bx-soa-order-save"}')
+              label.main-user-consent-request(for='filled-in-box', data-toggle='modal', data-target='#consentModal', data-bx-user-consent='{"id":1,"sec":"4reejg","autoSave":false,"actionUrl":"\/components\/catalog.detail\/userconsent.html","replace":{"button_caption":null,"fields":null},"submitEventName":"bx-soa-order-save"}')
                 | Нажимая кнопку «», я даю свое согласие на обработку моих
                 | персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных», на условиях и для целей,
                 | определенных в Согласии на обработку персональных данных

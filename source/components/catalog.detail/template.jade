@@ -177,7 +177,7 @@ script( src="/components/catalog.detail/script.js" )
                 span Отложить
                 span.i-stored.hidden Отложено
               
-            a( href="#" data-toggle="modal" data-target="#individualOrder" ) Индивидуальный заказ
+            a( href="#" data-ajax-url="/components/catalog.detail/individualOrder.html?somedata=value" data-toggle="modal" data-target="#individualOrder" ) Заказ по меркам
             br
             a( href="#" data-ajax-url="/components/catalog.detail/oneClick.html?somedata=value" data-toggle="modal" data-target="#oneClick" ) Купить в 1 клик
           
@@ -237,7 +237,13 @@ script( src="/components/catalog.detail/script.js" )
           a.btn.btn-default.btn-size-M( href="#" ) Перейти в корзину
           a.btn.btn-default.btn-size-M.btn-reset( href="#" data-dismiss='modal' ) Продолжить выбор
           
-  include ./individual-form
+  #individualOrder.modal.fade(tabindex='-1', role='dialog', aria-labelledby='individualOrderLabel')
+    .modal-dialog(role='document')
+      .modal-content
+        .modal-header
+        
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+          h2#individualOrderLabel.modal-title.text-center Индивидуальный заказ
           
   #oneClick.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
     .modal-dialog(role='document')
